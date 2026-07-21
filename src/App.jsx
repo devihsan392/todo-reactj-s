@@ -1,18 +1,19 @@
 import { useState } from 'react'
-import './style/App.css'
-import Navbar from './components/Navbar'
 import { Route, Routes } from 'react-router-dom'
+import Login from './components/Login'
+import Register from './components/Register'
+import Task from './components/Task'
 import Addtask from './components/Addtask'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-    <Navbar/>
     <Routes>
-      <Route path='/' element={<h1>Task list</h1>}/>
-      <Route path='/add' element={<Addtask/>}/>
+      <Route path='/' element={<Login/>}/>
+      <Route path='/register' element={<Register/>}/>
+      <Route path='/task' element={<Task/>}/>
+      <Route path='/add-task' element={<Addtask/>}/>
     </Routes>
 
     </>
