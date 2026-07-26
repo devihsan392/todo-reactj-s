@@ -4,4 +4,34 @@
     list-style: none;
     padding: 0;
     margin: 20px;
+    grid-template-columns: 60px 1fr 2fr auto;
 }
+.list-header{
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: blue;
+    color: white;
+}
+.list-item{
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+}
+.btn{
+display: flex;
+gap: 10px;
+justify-content: flex-start;
+}
+.btn button{
+    /* width: auto; */
+    padding: 10px 30px;
+    font-weight: bold;
+}
+.btn1{
+    background-color: red;
+}
+.btn2{
+    background-color: green;
+}
+

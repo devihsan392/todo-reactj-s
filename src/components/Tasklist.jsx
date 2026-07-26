@@ -16,11 +16,11 @@ function Tasklist() {
     fetchTasks()
 
   },[])
-  // async function deleteTask(id) {
-  //   const data = await axios.delete(`http://localhost:3200/tasks/${id}`)
-  //   const singleTask = tasks.filter((meratask)=> meratask._id !== id)
-  //   settasks(singleTask) 
-  // }
+  async function deleteTask(id) {
+    const data = await axios.delete(`http://localhost:3200/tasks/${id}`)
+    const singleTask = tasks.filter((meratask)=> meratask._id !== id)
+    settasks(singleTask) 
+  }
   return (
     <div>
       <h1>to do list</h1>
@@ -32,24 +32,20 @@ function Tasklist() {
          {
         tasks.map((meratask,index)=>{
             return(
-
               <>
         <li className='list-item'>{index+1}</li>
         <li className='list-item'>{meratask.title}</li>
         <li className='list-item'>{meratask.description}</li>
         <li className='list-item'>
-          <div>
-
-          <button>Delete</button>
-          <button>Edit</button>
+          <div className='btn'>
+          <button className='btn1' onClick={()=>deleteTask(meratask._id)}>Delete</button>
+          <button className='btn2' onClick={()=>{navigate("/edit-task")}}>Edit</button>  
           </div>
           </li>
             </>
             )
           })
-        }
-
-       
+        }       
       </ul>
     </div>
   )

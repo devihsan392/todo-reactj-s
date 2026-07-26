@@ -5,6 +5,7 @@ import Register from './components/Register'
 import Task from './components/Task'
 import Addtask from './components/Addtask'
 import Tasklist from './components/Tasklist'
+import Edittask from './components/Edittask'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Route path='/task' element={<Task/>}/>
       <Route path='/add-task' element={<Addtask/>}/>
       <Route path='/task-list' element={<Tasklist/>}/>
+      <Route path='/edit-task' element={<Edittask/>}/>
     </Routes>
 
     </>
