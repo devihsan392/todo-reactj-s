@@ -20,12 +20,12 @@
 }
 .btn{
 display: flex;
-gap: 10px;
-justify-content: flex-start;
+gap: 5px;
+justify-content: flex-end;
 }
 .btn button{
-    /* width: auto; */
-    padding: 10px 30px;
+    width: auto;
+    padding: 8px 12px;
     font-weight: bold;
 }
 .btn1{
@@ -33,5 +33,57 @@ justify-content: flex-start;
 }
 .btn2{
     background-color: green;
+}
+
+
+
+
+/* Yes Button */
+.my-confirm-btn {
+  background-color: #dc3545;
+  color: #fff;
+  width: auto;
+  padding: 10px 22px;
+  border: none ;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.my-confirm-btn:hover {
+  background-color: #bb2d3b;
+}
+
+/* No Button */
+.my-cancel-btn {
+  background-color: #6c757d;
+  color: #fff;
+  width: auto;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.my-cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+/* OK Button */
+.my-ok-btn {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 22px;
+  border: none;
+  width: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.my-ok-btn:hover {
+  background-color: #218838;
 }
 

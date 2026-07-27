@@ -1,9 +1,10 @@
 import React from 'react'
+import Swal from "sweetalert2";
 import '../style/tasklist.css'
 import axios from 'axios'
+import "sweetalert2/dist/sweetalert2.min.css";
 import { useEffect, useState } from 'react'
-// import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function Tasklist() {
     const[tasks, settasks] = useState([])
@@ -16,11 +17,93 @@ function Tasklist() {
     fetchTasks()
 
   },[])
-  async function deleteTask(id) {
-    const data = await axios.delete(`http://localhost:3200/tasks/${id}`)
-    const singleTask = tasks.filter((meratask)=> meratask._id !== id)
-    settasks(singleTask) 
+  // async function deleteTask(id) {
+  //   const data = await axios.delete(`http://localhost:3200/tasks/${id}`)
+  //   const singleTask = tasks.filter((meratask)=> meratask._id !== id)
+  //   settasks(singleTask) 
+  // }
+// const deleteTask = async (id) => {
+//   const confirmDelete = window.confirm(
+//     "Are you sure you want to delete this task?"
+//   );
+//   if (confirmDelete) {
+//     await axios.delete(`http://localhost:3200/tasks/${id}`);
+//     const singleTask = tasks.filter((meratask)=> meratask._id !== id)
+//     settasks(singleTask) 
+//     // fetchTasks(); // Data dobara load karne ke liye
+//   } else {
+//     return;
+//   }
+// };
+
+
+
+const deleteTask = async (id) => {
+  const result = await Swal.fire({
+    title: "Delete Task?",
+    text: "Do you really want to delete this task?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+    cancelButtonText: "No",
+
+    customClass: {
+      confirmButton: "my-confirm-btn",
+      cancelButton: "my-cancel-btn",
+    },
+
+    buttonsStyling: false,
+  });
+
+  if (result.isConfirmed) {
+    await axios.delete(`http://localhost:3200/tasks/${id}`);
+    fetchTasks();
+
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your task has been deleted.",
+      icon: "success",
+      confirmButtonText: "OK",
+
+      customClass: {
+        confirmButton: "my-ok-btn",
+      },
+
+      buttonsStyling: false,
+    });
   }
+};
+
+
+
+
+// const deleteTask = async (id) => {
+//   const result = await Swal.fire({
+//     title: "Delete Task?",
+//     text: "Do you really want to delete this task?",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonText: "Yes",
+//     cancelButtonText: "No",
+//      customClass: {
+//     confirmButton: "my-confirm-btn",
+//     cancelButton: "my-cancel-btn",
+//   },
+//   buttonsStyling: false,
+//   });
+
+//   if (result.isConfirmed) {
+//     await axios.delete(`http://localhost:3200/tasks/${id}`);
+//     fetchTasks();
+
+//     Swal.fire("Deleted!", "Your task has been deleted.", "success");
+    
+//   }
+// };
+
+
+
+
   return (
     <div>
       <h1>to do list</h1>
@@ -39,7 +122,7 @@ function Tasklist() {
         <li className='list-item'>
           <div className='btn'>
           <button className='btn1' onClick={()=>deleteTask(meratask._id)}>Delete</button>
-          <button className='btn2' onClick={()=>{navigate("/edit-task")}}>Edit</button>  
+          <button className='btn2' onClick={()=>navigate(`/edit-task/${meratask._id}`)}>Edit</button>  
           </div>
           </li>
             </>

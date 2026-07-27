@@ -17,7 +17,7 @@ function App() {
       <Route path='/task' element={<Task/>}/>
       <Route path='/add-task' element={<Addtask/>}/>
       <Route path='/task-list' element={<Tasklist/>}/>
-      <Route path='/edit-task' element={<Edittask/>}/>
+      <Route path='/edit-task/:id' element={<Edittask/>}/>
     </Routes>
 
     </>
